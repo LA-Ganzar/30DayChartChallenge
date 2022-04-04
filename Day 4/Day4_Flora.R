@@ -53,7 +53,7 @@ ggplot(flowers, aes(fill = Threat, y = Count, x = reorder(continent, Count))) +
                                  "Human Intrusions",
                                  "Transportation Corridor",
                                  "Natural System Modifications"),
-                    values = met.brewer("Redon", 9)) +
+                    values = met.brewer("Cassatt2", 9)) +
   theme(plot.margin = margin(rep(15, 4)),
         panel.grid = element_blank(),
         plot.caption = element_text(size = 8, margin = margin(t = 10), hjust = 0),
@@ -64,8 +64,8 @@ ggplot(flowers, aes(fill = Threat, y = Count, x = reorder(continent, Count))) +
   labs(x = element_blank(),
        y = "Count of Extinct Flowering Plants",
        title = "Extinct Flowering Plants by Main Driver of Species Decline",
-       subtitle = "Globally, agriculture and aquaculture is the largest contributor to flowering plant extinction, followed by biological resource use and natural system modifications. \nIn North America, climate change is the largest driver of extinction.",
-       caption = "Data: IUCN and Florent Lavergne | Plot: Leigh Ann Ganzar")
+       subtitle = "Globally, agriculture and aquaculture are the largest contributors to flowering plant extinction, followed by biological resource use and natural system modifications. \nIn North America, climate change is the largest driver of extinction among this group of species.",
+       caption = "Data Source: International Union for Conservation of Nature (IUCN) Red list of Threatened Species, compiled by Florent Lavergne | Plot: Leigh Ann Ganzar")
 
 ggsave("/Users/leighannganzar/Desktop/Post-Doc/30DayChartChallenge/30DayChartChallenge/Day 4/plot.jpg", width = 12, height = 6)
 
