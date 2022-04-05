@@ -2,70 +2,57 @@
 # Slope
 # 2022-04-05
 
-# Data Source: International Union for Conservation of Nature (IUCN) Red list of Threatened Species, compiled by Florent Lavergne
+# Data Source: survivorR R package from Daniel Oehm
 
 library(tidyverse)
 library(tidytuesdayR)
+library(MetBrewer)
+library(ggtext)
 
-# Write and wrangle data
-tuesdata <- tidytuesdayR::tt_load(2022, week = 14)
-news_orgs <- tuesdata$news_orgs
+theme_set(theme_minimal(base_family = "Assistant"))
 
-plants_rank <- plants %>%
-  summarize(AA = sum(threat_AA),
-            BRU = sum(threat_BRU),
-            RCD	= sum(threat_RCD),
-            ISGD = sum(threat_ISGD),
-            EPM	= sum(threat_EPM),
-            CC = sum(threat_CC),
-            HID	= sum(threat_HID),
-            P	= sum(threat_P),
-            TS = sum(threat_TS),
-            NSM	= sum(threat_NSM),
-            GE = sum (threat_GE))
+# Read and wrangle data
+tuesdata <- tidytuesdayR::tt_load(2021, week = 23)
+summary <- tuesdata$summary
 
-flowers <- plants %>%
-  filter(group == "Flowering Plant" & threat_NA == 0) %>%
-  group_by(continent) %>%
-  summarize(AA = sum(threat_AA),
-            BRU = sum(threat_BRU),
-            RCD	= sum(threat_RCD),
-            ISGD = sum(threat_ISGD),
-            EPM	= sum(threat_EPM),
-            CC = sum(threat_CC),
-            HID	= sum(threat_HID),
-            TS = sum(threat_TS),
-            NSM = sum(threat_NSM)) %>%
-  pivot_longer(!continent, names_to = "Threat", values_to = "Count")
+summary <- summary %>%
+  mutate(change = viewers_finale - viewers_premier) %>%
+  arrange(desc(change))
 
-# Stacked bar chart comparing threats to extinction across continents
-ggplot(flowers, aes(fill = Threat, y = Count, x = reorder(continent, Count))) + 
-  geom_bar(position="stack", stat="identity") +
-  coord_flip() +
+survivor <- summary %>%
+  select(season, viewers_premier, viewers_finale) %>%
+  pivot_longer(!season, names_to = "Episode", values_to = "Viewers_Count") %>%
+  mutate(Episode = factor(Episode),
+         season = factor(season)) %>% 
+  mutate(Episode = fct_relevel(Episode,c("viewers_premier","viewers_finale"))) %>%
+  mutate(color = case_when(season == "1" ~ "#3391a3", 
+                           season == "2" | season == "8" ~ "#f37e41",
+                           TRUE ~ "#2f2f2f"),
+         alpha = ifelse(season %in% c("1", "2", "8"), 1, 0.75))
+ 
+survivor %>%
+  ggplot( aes(x = Episode, y = Viewers_Count, group = season, color = color, alpha = alpha)) +
+  geom_line(size = 1) +
+  scale_color_identity() +
+  scale_x_discrete(expand = c(0.05,0),
+                   labels=c("viewers_premier" = "Season \nPremiere", "viewers_finale" = "Season \nFinale")) +
+  labs(y = "Viewers in millions",
+       fill = "",
+       title = "The Evolution of Survivor Viewer Count from Premiere to Finale by Season",
+       subtitle = "For most Survivor seasons, the viewership remained stable from the premiere to the finale, with the exception of the 3 highlighted seasons.") +
   theme_minimal() +
-  scale_fill_manual(name = "Main Driver of Decline", 
-                      labels = c("Agriculture & Aquaculture",
-                                 "Biological Resource Use",
-                                 "Commercial Development",
-                                 "Invasive Species",
-                                 "Energy Production & Mining",
-                                 "Climate Change",
-                                 "Human Intrusions",
-                                 "Transportation Corridor",
-                                 "Natural System Modifications"),
-                    values = met.brewer("Cassatt2", 9)) +
-  theme(plot.margin = margin(rep(15, 4)),
-        panel.grid = element_blank(),
-        plot.caption = element_text(size = 8, margin = margin(t = 10), hjust = 0),
-        axis.text = element_text(size = 11),
-        plot.title = element_text(size = 18),
-        plot.subtitle = element_text(size = 10),
-        axis.title.y = element_text(margin = margin(r = 10), size = 12)) +
-  labs(x = element_blank(),
-       y = "Count of Extinct Flowering Plants",
-       title = "Extinct Flowering Plants by Main Driver of Species Decline",
-       subtitle = "Globally, agriculture and aquaculture are the largest contributors to flowering plant extinction, followed by biological resource use and natural system modifications. \nIn North America, climate change is the largest driver of extinction among this group of species.",
-       caption = "Data Source: International Union for Conservation of Nature (IUCN) Red list of Threatened Species, compiled by Florent Lavergne | Plot: Leigh Ann Ganzar")
+  annotate("text",
+           x = c(1.25, 1.75),
+           y = c(48, 50),
+           label = c("Seasons 2 and 9 \nviewership decreased by \nabout 9 million", "Season 1 viewership \n increased by 36 million"),
+           family = "", fontface = 3, size=4, color = c("#f37e41", "#3391a3")) +
+  theme(
+    plot.title = (element_text(face = "bold")),
+    panel.grid.major.y = element_blank(), 
+    panel.grid.minor.y = element_blank(),
+    axis.title.x = element_blank(),
+    axis.text.x = element_text(face = "bold"),
+    legend.position = "none"
+  )
 
-ggsave("/Users/leighannganzar/Desktop/Post-Doc/30DayChartChallenge/30DayChartChallenge/Day 4/plot.jpg", width = 12, height = 6)
-
+ggsave("/Users/leighannganzar/Desktop/Post-Doc/30DayChartChallenge/30DayChartChallenge/Day 5/plot.jpg", width = 10.5, height = 6)
