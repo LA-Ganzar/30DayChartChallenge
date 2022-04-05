@@ -39,7 +39,8 @@ survivor %>%
   labs(y = "Viewers in millions",
        fill = "",
        title = "The Evolution of Survivor Viewer Count from Premiere to Finale by Season",
-       subtitle = "For most Survivor seasons, the viewership remained stable from the premiere to the finale, with the exception of the 3 highlighted seasons.") +
+       subtitle = "For most Survivor seasons, the viewership remained stable from the premiere to the finale, with the exception of the 3 highlighted seasons.",
+       caption = "survivorR R package from Daniel Oehm | Plot: Leigh Ann Ganzar") +
   theme_minimal() +
   annotate("text",
            x = c(1.25, 1.75),
@@ -52,6 +53,7 @@ survivor %>%
     panel.grid.minor.y = element_blank(),
     axis.title.x = element_blank(),
     axis.text.x = element_text(face = "bold"),
+    plot.caption = element_text(size = 8, margin = margin(t = 10), hjust = 0),
     legend.position = "none"
   )
 
