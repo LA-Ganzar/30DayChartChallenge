@@ -1,5 +1,5 @@
 # 30DayChartChallenge
-My contibutions to 2022 #30DayChartChallenge.
+My contributions to 2022 #30DayChartChallenge.
 
 # Categories
   1. Comparisons
