@@ -54,7 +54,6 @@ survivor %>%
     axis.title.x = element_blank(),
     axis.text.x = element_text(face = "bold"),
     plot.caption = element_text(size = 8, margin = margin(t = 10), hjust = 0),
-    legend.position = "none"
-  )
+    legend.position = "none")
 
 ggsave("/Users/leighannganzar/Desktop/Post-Doc/30DayChartChallenge/30DayChartChallenge/Day 5/plot.jpg", width = 10.5, height = 6)
