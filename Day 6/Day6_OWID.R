@@ -74,4 +74,4 @@ burden_pa %>%
         plot.subtitle = element_markdown(lineheight=.1),
         legend.text = element_markdown(size = 11))
 
-ggsave("/Users/leighannganzar/Desktop/Post-Doc/30DayChartChallenge/30DayChartChallenge/Day 6/plot.jpg", width = 10.5, height = 6)
+ggsave("/Users/leighannganzar/Desktop/Post-Doc/30DayChartChallenge/30DayChartChallenge/Day 6/plot.jpg", width = 9.5, height = 6)
