@@ -25,3 +25,8 @@ My contributions to 2022 #30DayChartChallenge.
   <a href="https://github.com/LA-Ganzar/30DayChartChallenge/blob/3ad951972b6d2ff3c98e78301efa0b6b10f6c5c5/Day%205/plot.jpg"><img src="https://github.com/LA-Ganzar/30DayChartChallenge/blob/3ad951972b6d2ff3c98e78301efa0b6b10f6c5c5/Day%205/plot.jpg" width=40% height=40%>
   
   [Code](https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%205/Day5_Slope.R)
+  
+  ## Day 6: Data Day - Our World in Data
+  <a href="https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%206/plot.jpg"><img src="https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%206/plot.jpg" width=40% height=40%>
+    
+  [Code](https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%206/Day6_OWID.R)
