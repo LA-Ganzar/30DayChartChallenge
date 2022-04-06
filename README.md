@@ -28,4 +28,5 @@ My contributions to 2022 #30DayChartChallenge.
   
   ## Day 6: Data Day - Our World in Data
   <a href="https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%206/plot.jpg"><img src="https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%206/plot.jpg" width=40% height=40%>
+    
   [Code](https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%206/Day6_OWID.R)
