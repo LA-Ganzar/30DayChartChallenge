@@ -30,3 +30,7 @@ My contributions to 2022 #30DayChartChallenge.
   <a href="https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%206/plot.jpg"><img src="https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%206/plot.jpg" width=40% height=40%>
     
   [Code](https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%206/Day6_OWID.R)
+    
+  ## Day 7: Physical 
+  <a href="https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%207/plot.jpg"><img src="https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%207/plot.jpg" width=40% height=40%>
+  [Code](https://github.com/LA-Ganzar/30DayChartChallenge/blob/main/Day%207/Day7_Physical.R)
