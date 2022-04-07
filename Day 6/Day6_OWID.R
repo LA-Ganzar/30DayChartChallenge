@@ -63,15 +63,18 @@ burden_pa %>%
     values = c("#0f4c5f", "#8bb791", "#ec9041", "#c54a41"),
   ) +
   labs(
-    title = "The Global Burden of Physical Activity is Increasing",  
+    title = "The Global Burden of Physical Inactivity is Increasing",  
     subtitle = "Globally, low levels of physical activity are responsible for 15.8 million lost years of healthy
     life annually, a figure that has doubled <br>in the last two decades. 
     <span style='color:#8bb791;'>Upper middle income</span>, and 
     <span style='color:#ec9041;'>lower middle income</span> countries have seen the highest increases in disease <br>burden from low physical activity levels since 1990.",
-    x = "Year", y = "Disability-Adjusted Life Years (in millions)") +
+    x = "Year", 
+    y = "Disability-Adjusted Life Years (in millions)",
+    caption = "Data: OWID & IHME Global Burden of Disease | Plot: Leigh Ann Ganzar") +
   theme_minimal() +
-  theme(plot.title = element_markdown(lineheight=.1, face = "bold"),
+  theme(plot.title = element_markdown(lineheight=.1, face = "bold", size = 20),
         plot.subtitle = element_markdown(lineheight=.1),
-        legend.text = element_markdown(size = 11))
+        legend.text = element_markdown(size = 11),
+        plot.caption = element_text(size = 8, hjust = 0))
 
 ggsave("/Users/leighannganzar/Desktop/Post-Doc/30DayChartChallenge/30DayChartChallenge/Day 6/plot.jpg", width = 9.5, height = 6)
