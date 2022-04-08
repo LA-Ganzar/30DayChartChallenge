@@ -1,2 +1,2 @@
-# Day 1: Part to Whole
+# Day 8: Mountains
 ![Screenshot](plot.jpg)
